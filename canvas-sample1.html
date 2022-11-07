@@ -1,8 +1,8 @@
 <html>
 <head>
 <meta charset="utf-8" >
-<meta name="description" content="ºô­¶ªºÂ²µu´y­z°Ï">
-<meta name="keywords" content="¤p¤u¨ã¡B°O¨Æµ¥(ºô­¶ÃöÁä¦r°Ï)">
+<meta name="description" content="ç¶²é çš„ç°¡çŸ­æè¿°å€">
+<meta name="keywords" content="å°å·¥å…·ã€è¨˜äº‹ç­‰(ç¶²é é—œéµå­—å€)">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <title></title>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
@@ -24,6 +24,17 @@
 <body>
     coming soon <br>
 Canvas-Sample1
+<hr>
+<canvas id="mycanvas" width="500" height="200" style="border:1px solid #000000;">ä¸æ”¯æ´HTML5 canvas label</canvas>
+<hr>
 
 </body>
+<script>
+    var c=document.getElementById("mycanvas");
+    var ctx=c.getContext("2d");
+    ctx.beginPath();
+    ctx.fillStyle="#FF0000";
+    ctx.arc(95,50,40,0,2*Math.PI);
+    ctx.stroke();
+</script>
 </html>

@@ -22,7 +22,7 @@
 </style>
 </head>
 <body>
-Canvas-Sample1.2
+Canvas-Sample1.3
 <hr>
 <canvas id="mycanvas" width="500" height="600" style="border:1px solid #000000;">不支援HTML5 canvas label</canvas>
 <hr>
@@ -46,6 +46,7 @@ Canvas-Sample1.2
     function draw(){
         ctx.clearRect(0,0,c.width,c.height);
         drawball();
+        alert("0,"&x&","&y);
         if(x+dx>c.width-ballRadius || x+dx <ballRadius){
             dx=-dx;
         }
@@ -54,6 +55,7 @@ Canvas-Sample1.2
         }
         x+=dx;
         y+=dy;
+        alert(x&","&y);
     }
     setInterval(draw,10);
     

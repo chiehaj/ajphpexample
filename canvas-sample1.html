@@ -22,13 +22,13 @@
     #mycanvas{
         fill:grey;
         width:100%;
-        height:100%;
+        height:95%;
         border:1px solid #000000;
     }
 </style>
 </head>
 <body>
-Canvas-Sample1.41
+Canvas-Sample1.42
 <hr>
 <canvas id="mycanvas" >不支援HTML5 canvas label</canvas>
 <hr>
@@ -37,9 +37,12 @@ Canvas-Sample1.41
 <script>
     var c=document.getElementById("mycanvas");
     var ctx=c.getContext("2d");
-    var ballRadius = 10;
+    var ballRadius = c.width * 0.02;
     var ballxpoint = c.width/2;
     var ballypoint = c.height-30;
+    if (ballxpoint>ballypoint){
+        ballRadius = c.height * 0.02;
+    }
     var dx=2;
     var dy=-2;
     function drawball(){

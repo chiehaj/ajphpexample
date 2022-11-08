@@ -20,14 +20,14 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>.
 <style>
     #div-canvas{
-        
+        align-content: center;
         width:40%;
         height:90%;
         border:1px solid #000000;
     }
     #mycanvas{
         fill:grey;
-        width:40%;
+        width:90%;
         height:90%;
         border:1px solid #000000;
     }
@@ -47,6 +47,7 @@
     var ballRadius = c.width * 0.02;
     var ballxpoint = c.width/2;
     var ballypoint = c.height-30;
+    alert(c.width);
     if (ballxpoint>ballypoint){
         ballRadius = c.height * 0.02;
     }
@@ -71,7 +72,10 @@
         ballxpoint+=dx;
         ballypoint+=dy;
     }
-    setInterval(draw,10);
+    function drawblock(){
+
+    }
+    //setInterval(draw,10);
     
 </script>
 </html>

@@ -19,20 +19,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>.
 <style>
+    #div-canvas{
+        
+        width:40%;
+        height:90%;
+        border:1px solid #000000;
+    }
     #mycanvas{
         fill:grey;
-        width:100%;
-        height:95%;
+        width:40%;
+        height:90%;
         border:1px solid #000000;
     }
 </style>
 </head>
 <body>
-Canvas-Sample1.42
-<hr>
-<canvas id="mycanvas" >不支援HTML5 canvas label</canvas>
-<hr>
-
+    <div id="div-canvas">
+        Canvas-Sample1.42
+        <hr>
+        <canvas id="mycanvas" >不支援HTML5 canvas label</canvas>
+        <hr>
+    </div>
 </body>
 <script>
     var c=document.getElementById("mycanvas");

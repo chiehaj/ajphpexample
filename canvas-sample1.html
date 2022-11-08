@@ -31,8 +31,6 @@ Canvas-Sample1
 </body>
 <script>
     var c=document.getElementById("mycanvas");
-    var cw=c.width;
-    var ch=c.height;
     var ctx=c.getContext("2d");
     var ballRadius = 10;
     var ballxpoint = c.width/2;
@@ -49,10 +47,10 @@ Canvas-Sample1
     function draw(){
         ctx.clearRect(0,0,c.width,c.height);
         drawball();
-        if(x+dx>cw-ballRadius || x+dx <ballRadius){
+        if(x+dx>c.width-ballRadius || x+dx <ballRadius){
             dx=-dx;
         }
-        if(y+dy>ch-ballRadius || y+dy <ballRadius){
+        if(y+dy>c.height-ballRadius || y+dy <ballRadius){
             dy=-dy;
         }
         x+=dx;

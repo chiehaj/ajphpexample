@@ -22,7 +22,7 @@
 </style>
 </head>
 <body>
-Canvas-Sample1.31
+Canvas-Sample1.4
 <hr>
 <canvas id="mycanvas" width="500" height="600" style="border:1px solid #000000;">不支援HTML5 canvas label</canvas>
 <hr>
@@ -46,16 +46,14 @@ Canvas-Sample1.31
     function draw(){
         ctx.clearRect(0,0,c.width,c.height);
         drawball();
-        alert("1111");
-        if(x+dx>c.width-ballRadius || x+dx <ballRadius){
+        if(ballxpoint+dx>c.width-ballRadius || ballxpoint+dx <ballRadius){
             dx=-dx;
         }
-        if(y+dy>c.height-ballRadius || y+dy <ballRadius){
+        if(ballypoint+dy>c.height-ballRadius || ballypoint+dy <ballRadius){
             dy=-dy;
         }
-        x+=dx;
-        y+=dy;
-        alert("222");
+        ballxpoint+=dx;
+        ballypoint+=dy;
     }
     setInterval(draw,10);
     

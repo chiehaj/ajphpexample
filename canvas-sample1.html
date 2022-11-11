@@ -72,10 +72,41 @@
         ballxpoint+=dx;
         ballypoint+=dy;
     }
+    var blockstartx=0;
+    var blockstarty=0;
+    var blockendx=1;
+    var blockendx=1;
+    var blocknsx=2;
+    var blocknsy=2;
+    var blocknex=2;
+    var blockney=2;
     function drawblock(){
-
+        ctx.fillStyle=getRandomColor();
+        ctx.fillRect(blockstartx,blockstarty,blockendx,blockendx);
+        if (blockendy+blockney>c.height/2 || blockendy+blockney<0){
+            blocknsy= -blocknsy;
+            blockney= -blockney;
+        }
+        if (blockendx+blocknex>c.width){
+            blocknsy= -blocknsy;
+            blockney= -blockney;
+            return;
+        }
+        blockstartx+=blocknsx;
+        blockstarty+=blocknsy;
+        blockendx+=blocknex;
+        blockendy+=blockney;
+    }
+    function getRandomColor(){
+        var colorcoderuls = "0123456789ABCDEF";
+        var resultcode = "#";
+        for (var count=0;count<6;count++){
+            resultcode = resultcode + colorcoderuls[Math.floor(Math.random()*16)]
+        }
+        return resultcode;
     }
     //setInterval(draw,10);
+    setInterval(drawblock,100)
     
 </script>
 </html>

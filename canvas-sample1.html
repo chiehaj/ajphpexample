@@ -35,7 +35,7 @@
 </head>
 <body>
     <div id="div-canvas">
-        Canvas-Sample1.42
+        Canvas-Sample1.50
         <hr>
         <canvas id="mycanvas" >不支援HTML5 canvas label</canvas>
         <hr>
@@ -48,6 +48,7 @@
     var ballxpoint = c.width/2;
     var ballypoint = c.height-30;
     alert(c.width);
+    alert(c.height);
     if (ballxpoint>ballypoint){
         ballRadius = c.height * 0.02;
     }
@@ -96,10 +97,6 @@
         blockstarty+=blocknsy;
         blockendx+=blocknex;
         blockendy+=blockney;
-        alert(blockstartx);
-        alert(blockstarty);
-        alert(blockendx);
-        alert(blockendy);
     }
     function getRandomColor(){
         var colorcoderuls = "0123456789ABCDEF";

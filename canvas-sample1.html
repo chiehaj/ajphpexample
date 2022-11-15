@@ -35,7 +35,7 @@
 </head>
 <body>
     <div id="div-canvas">
-        Canvas-Sample1.50
+        Canvas-Sample1.51
         <hr>
         <canvas id="mycanvas" >不支援HTML5 canvas label</canvas>
         <hr>
@@ -81,6 +81,7 @@
     var blocknsy=2;
     var blocknex=2;
     var blockney=2;
+    var blockover = false;
     function drawblock(){
         ctx.fillStyle=getRandomColor();
         ctx.fillRect(blockstartx,blockstarty,1,1);
@@ -90,6 +91,7 @@
         }
         if (blockstartx+blocknsx>c.width-2){
             alert("超過了");
+            clearInterval(godrawblock);
             return;
         }
         blockstartx+=blocknsx;
@@ -105,8 +107,13 @@
         }
         return resultcode;
     }
+    function startdrawblock(){
+        if (!blockover){
+
+        }
+    }
     //setInterval(draw,10);
-    setInterval(drawblock,100)
+    var godrawblock=setInterval(drawblock,100);
     
 </script>
 </html>

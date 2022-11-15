@@ -87,10 +87,14 @@
         if (blockstarty+blocknsy>c.height/2 || blockstarty+blocknsy<10){
             blocknsy= -blocknsy;
             blockstartx+=blocknsx;
+            if (blockstartx+blocknsx>c.width){
+                alert("超過了");
+                clearInterval(godrawblock);
+            }
             return;
         }
         
-        if (blockstartx+blocknsx>c.width-2){
+        if (blockstartx+blocknsx>c.width){
             alert("超過了");
             clearInterval(godrawblock);
             return;

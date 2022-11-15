@@ -82,7 +82,7 @@
     var blockney=2;
     function drawblock(){
         ctx.fillStyle=getRandomColor();
-        ctx.fillRect(blockstartx,blockstarty,blockendx,blockendx);
+        ctx.fillRect(blockstartx,blockstarty,blockendx,blockendy);
         if (blockendy+blockney>c.height/2 || blockendy+blockney<0){
             blocknsy= -blocknsy;
             blockney= -blockney;
@@ -96,6 +96,10 @@
         blockstarty+=blocknsy;
         blockendx+=blocknex;
         blockendy+=blockney;
+        alert(blockstartx);
+        alert(blockstarty);
+        alert(blockendx);
+        alert(blockendy);
     }
     function getRandomColor(){
         var colorcoderuls = "0123456789ABCDEF";

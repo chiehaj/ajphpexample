@@ -47,7 +47,7 @@
     var ballRadius = c.width * 0.02;
     var ballxpoint = c.width/2;
     var ballypoint = c.height-30;
-    alert("w:" & c.width & ",h:" & c.height);
+    alert("w:" + c.width + ",h:" + c.height);
     if (ballxpoint>ballypoint){
         ballRadius = c.height * 0.02;
     }
@@ -75,12 +75,17 @@
     var blockstartx=1;
     var blockstarty=10;
     
-    var blockw=30;
+    var blockw=calcblockw(10);
     var blockh=10;
 
     var blocknsx=blockw;
     var blocknsy=blockh;
-
+    function calcblockw(blockcount){
+        var result=1;
+        result = c.width/blockcount;
+        alert(result);
+        return result;
+    }
     function drawblock(){
         ctx.fillStyle=getRandomColor();
         ctx.fillRect(blockstartx,blockstarty,blockw,blockh);

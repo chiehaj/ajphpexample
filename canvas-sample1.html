@@ -99,6 +99,9 @@
             blockstartx+=blocknsx;
             if (blockstartx+blocknsx>c.width){
                 alert("超過了");
+                alert("0:sx-" + blockarray[0].sx + ",sy-" + blockarray[0].sy);
+                alert("7:sx-" + blockarray[7].sx + ",sy-" + blockarray[7].sy);
+                alert(blockarray.length + ":sx-" + blockarray[blockarray.length-1].sx + ",sy-" + blockarray[blockarray.length-1].sy);
                 clearInterval(godrawblock);
             }
             return;

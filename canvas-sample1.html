@@ -83,14 +83,13 @@
     var blockney=2;
     function drawblock(){
         ctx.fillStyle=getRandomColor();
-        ctx.fillRect(blockstartx,blockstarty,blockendx,blockendy);
-        if (blockendy+blockney>c.height/2 || blockendy+blockney<0){
+        ctx.fillRect(blockstartx,blockstarty,1,1);
+        if (blockstarty+blocknsy>c.height/2 || blockstarty+blocknsy<0){
             blocknsy= -blocknsy;
             blockney= -blockney;
         }
-        if (blockendx+blocknex>c.width){
-            blocknsy= -blocknsy;
-            blockney= -blockney;
+        if (blockstartx+blocknsx>c.width-2){
+            alert("超過了");
             return;
         }
         blockstartx+=blocknsx;

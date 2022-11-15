@@ -72,6 +72,10 @@
         ballxpoint+=dx;
         ballypoint+=dy;
     }
+
+    //Block create area -------------------
+    var blockarray=[];
+
     var blockstartx=1;
     var blockstarty=10;
     
@@ -89,6 +93,7 @@
     function drawblock(){
         ctx.fillStyle=getRandomColor();
         ctx.fillRect(blockstartx,blockstarty,blockw,blockh);
+        addblockproto(blockstartx,blockstarty,blockstartx+blockw,blockstarty+blockh);
         if (blockstarty+blocknsy>c.height/2 || blockstarty+blocknsy<10){
             blocknsy= -blocknsy;
             blockstartx+=blocknsx;
@@ -117,5 +122,16 @@
     //setInterval(draw,10);
     var godrawblock=setInterval(drawblock,100);
     
+    function addblockproto(sx,sy,ex,ey){
+        var obj={
+            sx:sx,
+            sy:sy,
+            ex:ex,
+            ey:ey,
+        };
+        blockarray.push(obj);
+    }
+    
+
 </script>
 </html>

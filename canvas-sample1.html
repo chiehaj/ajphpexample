@@ -75,16 +75,20 @@
     }
     var blockstartx=1;
     var blockstarty=10;
-    var blocknsx=5;
-    var blocknsy=5;
-    var blockw=5;
-    var blockh=5;
+    
+    var blockw=30;
+    var blockh=10;
+
+    var blocknsx=30;
+    var blocknsy=10;
+    
     function drawblock(){
         ctx.fillStyle=getRandomColor();
         ctx.fillRect(blockstartx,blockstarty,blockw,blockh);
         if (blockstarty+blocknsy>c.height/2 || blockstarty+blocknsy<10){
             blocknsy= -blocknsy;
             blockstartx+=blocknsx;
+            return;
         }
         
         if (blockstartx+blocknsx>c.width-2){

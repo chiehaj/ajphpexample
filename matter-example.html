@@ -1,0 +1,143 @@
+<html>
+<head>
+<meta charset="utf-8" >
+<meta name="description" content="網頁的簡短描述區">
+<meta name="keywords" content="小工具、記事等(網頁關鍵字區)">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<title></title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA 058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5 76PVCmYl" crossorigin="anonymous"></script>
+<!--------------------------->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.js "></script>
+<script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>.
+<style>
+</style>
+</head>
+<body>
+</body>
+<script>
+var s = document.createElement("script");
+s.type = "text/javascript";
+s.src = "https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"
+document.head.appendChild(s);
+
+var Example = Example || {};
+
+Example.mixed = function() {
+    var Engine = Matter.Engine,
+        Render = Matter.Render,
+        Runner = Matter.Runner,
+        Composites = Matter.Composites,
+        Common = Matter.Common,
+        MouseConstraint = Matter.MouseConstraint,
+        Mouse = Matter.Mouse,
+        Composite = Matter.Composite,
+        Bodies = Matter.Bodies;
+
+    // create engine
+    var engine = Engine.create(),
+        world = engine.world;
+
+    // create renderer
+    var render = Render.create({
+        element: document.body,
+        engine: engine,
+        options: {
+            width: 800,
+            height: 600,
+            showAngleIndicator: true,
+        }
+    });
+
+    Render.run(render);
+
+    // create runner
+    var runner = Runner.create();
+    Runner.run(runner, engine);
+
+    // add bodies
+    var stack = Composites.stack(20, 20, 10, 5, 0, 0, function(x, y) {
+        var sides = Math.round(Common.random(1, 8));
+
+        // round the edges of some bodies
+        var chamfer = null;
+        if (sides > 2 && Common.random() > 0.7) {
+            chamfer = {
+                radius: 10
+            };
+        }
+
+        switch (Math.round(Common.random(0, 1))) {
+        case 0:
+            if (Common.random() < 0.8) {
+                return Bodies.rectangle(x, y, Common.random(25, 50), Common.random(25, 50), { chamfer: chamfer });
+            } else {
+                return Bodies.rectangle(x, y, Common.random(80, 120), Common.random(25, 30), { chamfer: chamfer });
+            }
+        case 1:
+            return Bodies.polygon(x, y, sides, Common.random(25, 50), { chamfer: chamfer });
+        }
+    });
+
+    Composite.add(world, stack);
+
+    Composite.add(world, [
+        // walls
+        Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
+        Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
+        Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
+        Bodies.rectangle(0, 300, 50, 600, { isStatic: true })
+    ]);
+
+    // add mouse control
+    var mouse = Mouse.create(render.canvas),
+        mouseConstraint = MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+                stiffness: 0.2,
+                render: {
+                    visible: false
+                }
+            }
+        });
+
+    Composite.add(world, mouseConstraint);
+
+    // keep the mouse in sync with rendering
+    render.mouse = mouse;
+
+    // fit the render viewport to the scene
+    Render.lookAt(render, {
+        min: { x: 0, y: 0 },
+        max: { x: 800, y: 600 }
+    });
+
+    // context for MatterTools.Demo
+    return {
+        engine: engine,
+        runner: runner,
+        render: render,
+        canvas: render.canvas,
+        stop: function() {
+            Matter.Render.stop(render);
+            Matter.Runner.stop(runner);
+        }
+    };
+};
+
+Example.mixed.title = 'Mixed Shapes';
+Example.mixed.for = '>=0.14.2';
+
+if (typeof module !== 'undefined') {
+    module.exports = Example.mixed;
+}
+</script>
+</html>

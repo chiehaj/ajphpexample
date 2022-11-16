@@ -144,49 +144,49 @@ if (typeof module !== 'undefined') {
 //設置基礎環境階段
 function setup(){
 // 引用 Engine, Bodies 與 Worldlet Engine = Matter.Engine
-    let Bodies = Matter.Bodies
-    let World = Matter.World
-
+    let Bodies = Matter.Bodies;
+    let World = Matter.World;
+    alert("1.1");
 // 建立方塊物件let boxA )
 
 // 建立地板，並設定 isStatic 為 true，
 // 讓他固定不動
-    let ground = Bodies.rectangle(width/2,height+30,width,60,{isStatic: true})
-
+    let ground = Bodies.rectangle(width/2,height+30,width,60,{isStatic: true});
+    alert("1.2");
 // 將物件加入到物理引擎內
-    World.add(engine.world, boxA)
-    World.add(engine.world, ground)
-
+    World.add(engine.world, boxA);
+    World.add(engine.world, ground);
+    alert("1.3");
 // 初始化物理引擎
-    engine = Engine.create()
+    engine = Engine.create();
+    alert("1.4");
 }
 
 function draw(){
 // 繪製出物件
 
-    begineShape()
+    begineShape();
     for(let vert of boxA.vertices){
         vertex(vert.x, vert.y)
     }
-    endShape()
+    endShape();
 
 // 繪製出地板
-    begineShape()
+    begineShape();
     for(let vert of ground.vertices){
-        vertex(vert.x, vert.y)
+        vertex(vert.x, vert.y);
     }
-    endShape()
+    endShape();
 }
 
 function generateNewBox(){
-    let {Engine,Bodies,World,Constraint} = Matter
-    let sz = random([10,20,40,60])
-    let boxA = Bodies.polygon(
-        random(width),random(height/3),4,sz)
-    boxA.color = random(colors)
-    boxA.sz = sz
-    boxA.char = random("ABC".split(""))
-    boxes.push(boxA)
+    let {Engine,Bodies,World,Constraint} = Matter;
+    let sz = random([10,20,40,60]);
+    let boxA = Bodies.polygon(random(width),random(height/3),4,sz);
+    boxA.color = random(colors);
+    boxA.sz = sz;
+    boxA.char = random("ABC".split(""));
+    boxes.push(boxA);
 
     var constraint = Constraint.create({
         pointA: {x: width/2,y: 50},
@@ -194,12 +194,12 @@ function generateNewBox(){
         length: random(50,width/2),
         stiffness: 0.01,
         damping: 0.05
-    })
+    });
 
-    constraints.push(constraint)
-    World.add(engine.world,constraint)
+    constraints.push(constraint);
+    World.add(engine.world,constraint);
 
-    World.add(engine.world,boxA)
+    World.add(engine.world,boxA);
 }
 alert("1");
 setup();
@@ -212,7 +212,7 @@ alert("4");
 // 將 Matter 的 Mouse 物件建立在 canvas 的 element 上var mouse = Mouse.create(canvas.elt)
 mouseConstraint = MouseConstraint.create(engine,{
 	mouse: mouse
-})
+});
 World.add(engine.world,mouseConstraint)
 
 var constraint = Constraint.create({
@@ -220,17 +220,17 @@ var constraint = Constraint.create({
         bodyB: boxA,
         length: random(50,width/2),
         stiffness: 0.01,//彈性damping: 0.05// 阻尼
-    })
+    });
 
-    constraints.push(constraint)
-    World.add(engine.world,constraint)
+    constraints.push(constraint);
+    World.add(engine.world,constraint);
 
     Events.on(engine,'collisionStart',function(event){
 	for(let pair of event.pairs){
 // console.log(pair)
 // clickSound.play()
 	}
-})
+});
 alert("5");
 </script>
 </html>

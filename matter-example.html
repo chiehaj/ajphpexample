@@ -22,7 +22,7 @@
 </style>
 </head>
 <body>
-    2
+    3
 </body>
 <script>
 var s = document.createElement("script");
@@ -201,9 +201,13 @@ function generateNewBox(){
 
     World.add(engine.world,boxA)
 }
+alert("1");
 setup();
+alert("2");
 draw();
+alert("3");
 generateNewBox();
+alert("4");
 
 // 將 Matter 的 Mouse 物件建立在 canvas 的 element 上var mouse = Mouse.create(canvas.elt)
 mouseConstraint = MouseConstraint.create(engine,{
@@ -227,5 +231,6 @@ var constraint = Constraint.create({
 // clickSound.play()
 	}
 })
+alert("5");
 </script>
 </html>

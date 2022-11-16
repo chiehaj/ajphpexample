@@ -22,12 +22,14 @@
 </style>
 </head>
 <body>
+    1
 </body>
 <script>
 var s = document.createElement("script");
 s.type = "text/javascript";
 s.src = "https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js";
 document.head.appendChild(s);
+/*
 alert("hey0");
 var Example = Example || {};
 alert("hey1");
@@ -137,6 +139,90 @@ Example.mixed.for = '>=0.14.2';
 alert("hey3");
 if (typeof module !== 'undefined') {
     module.exports = Example.mixed;
+}*/
+
+//設置基礎環境階段
+function setup(){
+// 引用 Engine, Bodies 與 Worldlet Engine = Matter.Engine
+    let Bodies = Matter.Bodies
+    let World = Matter.World
+
+// 建立方塊物件let boxA )
+
+// 建立地板，並設定 isStatic 為 true，
+// 讓他固定不動
+    let ground = Bodies.rectangle(width/2,height+30,width,60,{isStatic: true})
+
+// 將物件加入到物理引擎內
+    World.add(engine.world, boxA)
+    World.add(engine.world, ground)
+
+// 初始化物理引擎
+    engine = Engine.create()
 }
+
+function draw(){
+// 繪製出物件
+
+    begineShape()
+    for(let vert of boxA.vertices){
+        vertex(vert.x, vert.y)
+    }
+    endShape()
+
+// 繪製出地板
+    begineShape()
+    for(let vert of ground.vertices){
+        vertex(vert.x, vert.y)
+    }
+    endShape()
+}
+
+function generateNewBox(){
+    let {Engine,Bodies,World,Constraint} = Matter
+    let sz = random([10,20,40,60])
+    let boxA = Bodies.polygon(
+        random(width),random(height/3),4,sz)
+    boxA.color = random(colors)
+    boxA.sz = sz
+    boxA.char = random("ABC".split(""))
+    boxes.push(boxA)
+
+    var constraint = Constraint.create({
+        pointA: {x: width/2,y: 50},
+        bodyB: boxA,
+        length: random(50,width/2),
+        stiffness: 0.01,
+        damping: 0.05
+    })
+
+    constraints.push(constraint)
+    World.add(engine.world,constraint)
+
+    World.add(engine.world,boxA)
+}
+
+// 將 Matter 的 Mouse 物件建立在 canvas 的 element 上var mouse = Mouse.create(canvas.elt)
+mouseConstraint = MouseConstraint.create(engine,{
+	mouse: mouse
+})
+World.add(engine.world,mouseConstraint)
+
+var constraint = Constraint.create({
+        pointA: {x: width/2,y: 50},
+        bodyB: boxA,
+        length: random(50,width/2),
+        stiffness: 0.01,//彈性damping: 0.05// 阻尼
+    })
+
+    constraints.push(constraint)
+    World.add(engine.world,constraint)
+
+    Events.on(engine,'collisionStart',function(event){
+	for(let pair of event.pairs){
+// console.log(pair)
+// clickSound.play()
+	}
+})
 </script>
 </html>

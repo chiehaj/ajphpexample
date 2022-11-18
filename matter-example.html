@@ -172,12 +172,12 @@ const render = Render.create({
         height:600,
     }
 });
-
+alert("1");
 Render.run(render);
-
+alert("2");
 const runner = Runner.create();
 Runner.run(runner,engine);
-
+alert("3");
 // add bodies
 Composite.add(world, [
         // falling blocks
@@ -191,7 +191,7 @@ Composite.add(world, [
         Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
         Bodies.rectangle(0, 300, 50, 600, { isStatic: true })
     ]);
-
+    alert("4");
     // add mouse control
     var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
@@ -203,18 +203,18 @@ Composite.add(world, [
                 }
             }
         });
-
+        alert("5");
     Composite.add(world, mouseConstraint);
-
+    alert("6");
     // keep the mouse in sync with rendering
     render.mouse = mouse;
-
+    alert("7");
     // fit the render viewport to the scene
     Render.lookAt(render, {
         min: { x: 0, y: 0 },
         max: { x: 800, y: 600 }
     });
-
+    alert("8");
     // context for MatterTools.Demo
     /*
     return {
@@ -229,12 +229,15 @@ Composite.add(world, [
     };
     */
 
-
+    alert("9");
+    /*
 Example.airFriction.title = 'Air Friction';
 Example.airFriction.for = '>=0.14.2';
-
+*/
+/*
 if (typeof module !== 'undefined') {
     module.exports = Example.airFriction;
 }
+*/
 </script>
 </html>

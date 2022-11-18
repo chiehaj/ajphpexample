@@ -4,7 +4,7 @@
 <meta name="description" content="網頁的簡短描述區">
 <meta name="keywords" content="小工具、記事等(網頁關鍵字區)">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-<title>8</title>
+<title>9</title>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <!-- Bootstrap CSS -->
@@ -150,20 +150,27 @@ if (typeof module !== 'undefined') {
 //Composite -> 操控 Composites 用
 //Constraint -> 設定物體的限制條件
 //MouseConstraint -> 滑鼠控制物體用
+alert("0");
 const World = Matter.World;
+alert("0.1");
 const Bodies = Matter.Bodies;
+alert("0.2");
 const Body = Matter.Body;
 const Engine = Matter.Engine;
 const Render = Matter.Render;
+alert("0.3");
 const Composites = Matter.Composites;
 const Composite = Matter.Composite;
 const Constraint = Matter.Constraint;
 const MouseConstraint = Matter.MouseConstraint;
+alert("0.4");
 const engine = Engine.cteate();
+alert("0.5");
 const world = engine.world;
+alert("0.6");
 const Runner = Matter.Runner;
 const Mouse = Matter.Mouse;
-
+alert("0.7");
 const render = Render.create({
     element:document.body,
     engine:engine,
